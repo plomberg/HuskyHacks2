@@ -29,7 +29,8 @@ const char *conditions[] =
 String condition_read_string;
 char condition_read[NUM_CHARACTERS];
 
-uint8_t mode_pin = 5; // change this to proper pin
+uint8_t rain_pin = 5; // change this to proper pin
+uint8_t mode_pin = 6; 
 uint8_t led_pin = 13;
 uint8_t condition_num;
 
@@ -42,6 +43,7 @@ void setup() {
   pinMode(mode_pin, INPUT);
   digitalWrite(mode_pin, HIGH); // enable pullup
   pinMode(led_pin, OUTPUT);
+  pinMode(rain_pin, OUTPUT); 
 
   strip.begin();
   strip.show();
@@ -78,7 +80,7 @@ void loop() {
     condition_num = condition_string_to_num(condition_read);
   }
   
-  switch (5)
+  switch (10)
   {
     // no value read
     case 0 :
@@ -107,6 +109,8 @@ void loop() {
     case 9 :
       light_rain();
       break;
+    case 10:
+      weather_demo();
     default :
       unknown_condition();
       break;

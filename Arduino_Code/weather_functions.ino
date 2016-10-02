@@ -58,6 +58,7 @@ void clear_weather(void)
 void chance_of_rain(void)
 {
   blink_light(4);
+  digitalWrite(rain_pin, HIGH);
   for (int e = 0; e < NUMPIXELS; e++) {
   strip.setPixelColor(e, 0x035F80);
   }
@@ -66,6 +67,7 @@ void chance_of_rain(void)
 
 void thunderstorm(void)
 {
+  digitalWrite(rain_pin, HIGH);
   blink_light(5);
   // Rain and flashing bright lights every few seconds
   for (int f = 0; f < NUMPIXELS; f++) {
@@ -184,6 +186,7 @@ void thunderstorm(void)
 
 void chance_of_a_thunderstorm(void)
 {
+  digitalWrite(rain_pin, HIGH);
   blink_light(6);
    for (int f = 0; f < NUMPIXELS; f++) {
   strip.setPixelColor(f, 0x0000FF);
@@ -246,6 +249,7 @@ void chance_of_a_thunderstorm(void)
 
 void light_rain(void)
 {
+  digitalWrite(rain_pin, HIGH);
   blink_light(7);
   // pwm'd rain?
   int k = 0;
@@ -264,12 +268,29 @@ void unknown_condition(void)
 void weather_demo(void)
 {
   // cycle lights night-day fairly slowly (rotation of light source)
-
+  
+for (int d = 0; d < NUMPIXELS; d++) {
+  strip.setPixelColor(d, 0x0000DC);
+  }
+  strip.show();
+    for ( int x=0; x< NUMPIXELS; x++){
+    strip.setPixelColor(x, 0xE1E100);
+    strip.show();
+    delay(1000);
+    strip.setPixelColor(x, 0x0000DC);
+    strip.show();
+    }
+  digitalWrite(rain_pin, HIGH);
+  for (int e = 0; e < NUMPIXELS; e++) {
+  strip.setPixelColor(e, 0x035F80);
+  }
+  strip.show();
+  delay(15000);
+  digitalWrite(rain_pin, LOW);
+    
   // have a rain event for ~15 seconds?
 
   // lightning during the rainstorm
 
-  // if switch switched back, go back
-  if (digitalRead(mode_pin))
-    return;
+
 }
