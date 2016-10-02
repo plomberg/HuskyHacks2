@@ -1,12 +1,15 @@
 #include <Adafruit_DotStar.h>
+
+#include <Adafruit_DotStar.h>
 #include <SPI.h>
 
 #define NUM_CONDITIONS 8
 #define NUM_CHARACTERS 30
 #define DATAPIN 4
-#define CLOCK 5
+#define CLOCKPIN 5
+#define NUMPIXELS 4
 
-Adafruit_DotStar strip = Adafruit_Dotstar (
+Adafruit_DotStar strip = Adafruit_DotStar (
    NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
 
 
@@ -43,11 +46,8 @@ void setup() {
   strip.begin();
   strip.show();
 
-  for (int x = 0, x<30; x++){
-    all[x] = x;
   }
-  }
-}
+
 
 uint8_t condition_string_to_num(char condition_read[]);
 void weather_demo(void);
@@ -78,7 +78,7 @@ void loop() {
     condition_num = condition_string_to_num(condition_read);
   }
   
-  switch (condition_num)
+  switch (5)
   {
     // no value read
     case 0 :
